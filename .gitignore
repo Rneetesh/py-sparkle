@@ -4,3 +4,5 @@
 *.pyc
 # Ignore CSV log files
 *.csv
+# Ignore .log files
+*.log

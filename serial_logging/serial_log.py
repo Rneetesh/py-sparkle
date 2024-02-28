@@ -105,11 +105,14 @@ def log_data_to_csv(device, log_data):
     log_data.insert(0, current_date)
     print("Data to be logged-- {}".format(log_data))
 
+    # Check if the file exists before opening it
+    file_exists = os.path.isfile(file_path)
+
     with open(file_path, mode='a', newline='') as file:
         writer = csv.DictWriter(file, fieldnames=header)
         log_dict = dict(zip(header, log_data))
         
-        if not os.path.isfile(file_path):
+        if not file_exists:
             writer.writeheader()
         else:
             writer.writerow(log_dict)
